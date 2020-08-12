@@ -1,14 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { Color } from '../models/Color';
 
-export const ColorTool = () => {
+type ColorToolProps = {
+  colors: Color[],
+};
 
-  const colors: Color[] = [
-    { id: 1, name: 'red', hexcode: 'FF0000' },
-    { id: 2, name: 'blue', hexcode: '00FF00' },
-    { id: 3, name: 'green', hexcode: '0000FF' },
-  ];
+export const ColorTool: FC<ColorToolProps> = (props) => {
 
   return (
     <>
@@ -16,7 +14,7 @@ export const ColorTool = () => {
         <h1>Color Tool</h1>
       </header>
       <ul>
-        {colors.map(color =>
+        {props.colors.map(color =>
           <li key={color.id}>{color.name}</li>)}
       </ul>
     </>
