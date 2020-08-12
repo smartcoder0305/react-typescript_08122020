@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent } from 'react';
+import React, { FC, useState, ChangeEvent, MouseEvent } from 'react';
 
 import { Color } from '../models/Color';
 
@@ -16,6 +16,8 @@ export const ColorTool: FC<ColorToolProps> = (props) => {
     hexcode: '',
   } /* initializing the state to this value */);
 
+  const [ colors, setColors ] = useState(props.colors.concat() /* copy the array passed in via props */);
+
   const change = (e: ChangeEvent<HTMLInputElement>) => {
     setColorForm({
       ...colorForm, // copy the current color form properties on to the new state object
@@ -23,7 +25,21 @@ export const ColorTool: FC<ColorToolProps> = (props) => {
     });
   };
 
-  console.log(colorForm);
+  const addColor = (e: MouseEvent<HTMLButtonElement>) => {
+
+    // e.preventDefault();
+
+    setColors(colors.concat({
+      ...colorForm, /* copy the properties of color form into the new color object because the properties are the same */
+      id: Math.max(...colors.map(c => c.id), 0) + 1, /* find the max id in the array and add 1 */
+    }));
+
+    // clear the form
+    setColorForm({
+      name: '', hexcode: '',
+    });
+
+  };
 
   return (
     <>
@@ -31,8 +47,8 @@ export const ColorTool: FC<ColorToolProps> = (props) => {
         <h1 className="page-header">Color Tool</h1>
       </header>
       <ul>
-        {props.colors.map(color =>
-          <li key={color.id}>{color.name}</li>)}
+        {colors.map(color =>
+          <li key={color.id}>{color.id} {color.name} {color.hexcode}</li>)}
       </ul>
       <form>
         <div>
@@ -45,6 +61,7 @@ export const ColorTool: FC<ColorToolProps> = (props) => {
           <label htmlFor="color-hexcode-input">Color Hexcode:</label>
           <input type="text" id="color-hexcode-input" name="hexcode" value={colorForm.hexcode} onChange={change} />
         </div>
+        <button type="button" onClick={addColor}>Add Color</button>
       </form>
     </>
   );
