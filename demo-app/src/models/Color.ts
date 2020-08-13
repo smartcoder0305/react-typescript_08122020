@@ -1,7 +1,7 @@
 
 
 export type Color = {
-  id: number,
+  id?: number,
   name: string,
   hexcode: string,
 };

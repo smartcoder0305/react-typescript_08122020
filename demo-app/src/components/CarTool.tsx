@@ -3,22 +3,31 @@ import React, { FC, useState, ChangeEvent } from 'react';
 import { Car } from '../models/Car';
 
 import { ToolHeader } from './ToolHeader';
+import { ToolFooter } from './ToolFooter';
+import { CarTable } from './CarTable';
 
 export type CarToolProps = {
   cars: Car[],
 };
 
+const carColors = ['red','green','blue'];
+
+function isInput(x: any): x is HTMLInputElement {
+  return x.valueAsNumber;
+}
+
 export const CarTool: FC<CarToolProps> = (props) => {
 
-  const [ carForm, setCarForm ] = useState({ make: '', model: '', year: 1900, color: '', price: 0 });
+  const [ carForm, setCarForm ] = useState({
+    make: '', model: '', year: 1900, color: carColors[0], price: 0 });
 
   const [ cars, setCars ] = useState(props.cars.concat());
 
-  const change = (e: ChangeEvent<HTMLInputElement>) => {
+  const change = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 
     setCarForm({
       ...carForm,
-      [ e.target.name ]: e.target.type === 'number'
+      [ e.target.name ]: isInput(e.target) && e.target.type === 'number'
         ? e.target.valueAsNumber : e.target.value,
     });
 
@@ -36,28 +45,7 @@ export const CarTool: FC<CarToolProps> = (props) => {
   return (
     <>
       <ToolHeader headerText="Car Tool" />
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Year</th>
-            <th>Color</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cars.map(car => <tr key={car.id}>
-            <td>{car.id}</td>
-            <td>{car.make}</td>
-            <td>{car.model}</td>
-            <td>{car.year}</td>
-            <td>{car.color}</td>
-            <td>{car.price}</td>
-          </tr>)}
-        </tbody>
-      </table>
+      <CarTable cars={cars} />
       <form>
         <div>
           <label htmlFor="make-input">Make:</label>
@@ -73,7 +61,10 @@ export const CarTool: FC<CarToolProps> = (props) => {
         </div>
         <div>
           <label htmlFor="color-input">Color:</label>
-          <input type="text" id="color-input" name="color" value={carForm.color} onChange={change} />
+          <select id="color-select" name="color" onChange={change}>
+            {carColors.map(carColor =>
+              <option key={carColor} value={carColor}>{carColor}</option>)}
+          </select>
         </div>
         <div>
           <label htmlFor="price-input">Price:</label>
@@ -81,6 +72,7 @@ export const CarTool: FC<CarToolProps> = (props) => {
         </div>
         <button type="button" onClick={addCar}>Add Car</button>
       </form>
+      <ToolFooter companyName="A Cool Company, Inc." />
     </>
   );
 

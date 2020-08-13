@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5a07fa23-dcfe-4ac6-96f7-e9f335755ea1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo-app/src/components/CarTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/demo-app/src/components/CarTable.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo-app/src/components/CarTool.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/demo-app/src/components/CarTool.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo-app/src/components/CarViewRow.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/demo-app/src/components/CarViewRow.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo-app/src/components/ColorTool.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/demo-app/src/components/ColorTool.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo-app/src/models/Color.ts" beforeDir="false" afterPath="$PROJECT_DIR$/demo-app/src/models/Color.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +48,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597333662625</updated>
-      <workItem from="1597333663662" duration="596000" />
+      <workItem from="1597333663662" duration="2517000" />
     </task>
     <servers />
   </component>

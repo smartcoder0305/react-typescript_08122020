@@ -2,11 +2,11 @@ import React, { FC } from 'react';
 
 import { Car } from '../models/Car';
 
-export type CarTableProps = {
+export type CarViewRowProps = {
   car: Car,
 };
 
-export const CarTable: FC<CarTableProps> = ({ car }) => {
+export const CarViewRow: FC<CarViewRowProps> = ({ car }) => {
 
   return (
     <tr>
@@ -16,14 +16,7 @@ export const CarTable: FC<CarTableProps> = ({ car }) => {
       <td>{car.year}</td>
       <td>{car.color}</td>
       <td>{car.price}</td>
-      </tr>)}
-      </tbody>
-    </table>
+    </tr>
   );
 
-
-}
-
-CarTable.defaultProps = {
-  cars: [],
 };
