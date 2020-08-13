@@ -4,9 +4,13 @@ import { Car } from '../models/Car';
 
 export type CarViewRowProps = {
   car: Car,
+  onDeleteCar: (carId: number) => void,
 };
 
-export const CarViewRow: FC<CarViewRowProps> = ({ car }) => {
+export const CarViewRow: FC<CarViewRowProps> = ({
+  car,
+  onDeleteCar: deleteCar,
+}) => {
 
   return (
     <tr>
@@ -16,6 +20,11 @@ export const CarViewRow: FC<CarViewRowProps> = ({ car }) => {
       <td>{car.year}</td>
       <td>{car.color}</td>
       <td>{car.price}</td>
+      <td>
+        <button type="button" onClick={() => deleteCar(car.id!)}>
+          Delete
+        </button>
+      </td>
     </tr>
   );
 
