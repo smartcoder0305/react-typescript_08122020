@@ -1,6 +1,6 @@
 # Exercise 8
 
-1. Create a new component named Car Form. Move the car form from Car Tool to the new component. Utilize the new Car Form component within Car Tool.
+1. Create a new component named Car Form. Move the car form from Car Tool to the new component. Utilize the new Car Form component within Car Tool. Please use the custom `useForm` hook to complete the exercise.
 
 2. In the Car Table component, add a new header column with a label of 'Actions'.
 
