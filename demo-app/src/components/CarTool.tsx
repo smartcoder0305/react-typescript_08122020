@@ -2,6 +2,8 @@ import React, { FC, useState, ChangeEvent } from 'react';
 
 import { Car } from '../models/Car';
 
+import { ToolHeader } from './ToolHeader';
+
 export type CarToolProps = {
   cars: Car[],
 };
@@ -33,9 +35,7 @@ export const CarTool: FC<CarToolProps> = (props) => {
 
   return (
     <>
-      <header>
-        <h1>Car Tool</h1>
-      </header>
+      <ToolHeader headerText="Car Tool" />
       <table>
         <thead>
           <tr>
