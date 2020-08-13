@@ -27,7 +27,7 @@ export const CarTool: FC<CarToolProps> = (props) => {
     setCars(cars.concat({
       ...carForm,
       id: Math.max(...cars.map(c => c.id), 0 ) + 1,
-    }))
+    }));
 
   };
 

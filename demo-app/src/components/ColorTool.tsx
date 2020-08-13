@@ -2,6 +2,8 @@ import React, { FC, useState, ChangeEvent, MouseEvent } from 'react';
 
 import { Color } from '../models/Color';
 
+import { ToolHeader } from './ToolHeader';
+
 type ColorToolProps = {
   colors: Readonly<Color[]>,
 };
@@ -45,9 +47,7 @@ export const ColorTool: FC<ColorToolProps> = (props) => {
 
   return (
     <>
-      <header>
-        <h1 className="page-header">Color Tool</h1>
-      </header>
+      <ToolHeader headerText="Color Tool" />
       <ul>
         {colors.map(color =>
           <li key={color.id}>{color.id} {color.name} {color.hexcode}</li>)}
