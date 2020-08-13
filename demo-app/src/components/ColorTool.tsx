@@ -41,6 +41,8 @@ export const ColorTool: FC<ColorToolProps> = (props) => {
 
   };
 
+  console.log(colorForm);
+
   return (
     <>
       <header>
