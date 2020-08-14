@@ -1,0 +1,29 @@
+.modal-wrapper {
+  position: fixed;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(150, 150, 150, 0.5);
+  z-index: 999;
+}
+
+.modal-dialog {
+  text-align:center;
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.modal-dialog fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-dialog fieldset button {
+  margin: 4px;
+}

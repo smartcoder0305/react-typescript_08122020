@@ -7,6 +7,7 @@ import { ToolHeader } from './ToolHeader';
 import { ToolFooter } from './ToolFooter';
 import { CarTable } from './CarTable';
 import { CarForm } from './CarForm';
+import { ConfirmModal } from './ConfirmModal';
 
 export type CarToolProps = {
   cars: Car[],
@@ -15,6 +16,7 @@ export type CarToolProps = {
 export const CarTool: FC<CarToolProps> = (props) => {
 
   const [ editCarId, setEditCarId ] = useState(-1);
+  const [ confirmDeleteCarId, setConfirmDeleteCarId ] = useState(-1);
 
   const [ cars, appendCar, removeCar, replaceCar ] = useCarList(props.cars.concat());
 
@@ -25,9 +27,14 @@ export const CarTool: FC<CarToolProps> = (props) => {
     cancelCar();
   };
 
+  const confirmDeleteCar = (carId: number) => {
+    setConfirmDeleteCarId(carId);
+  };
+
   const deleteCar = (carId: number) => {
     removeCar(carId);
     cancelCar();
+    dismissConfirmDeleteCarModal();
   };
 
   const saveCar = (car: Car) => {
@@ -35,14 +42,28 @@ export const CarTool: FC<CarToolProps> = (props) => {
     cancelCar();
   };
 
+  const getCarDetailsById = (carId: number) => {
+    const { make, model, year } = cars.find(car => car.id === carId)!;
+    return make + ' ' + model + ' ' + String(year);
+  };
+
+  const dismissConfirmDeleteCarModal = () => {
+    setConfirmDeleteCarId(-1);
+  };
+
   return (
     <>
       <ToolHeader headerText="Car Tool" />
       <CarTable cars={cars} editCarId={editCarId}
-        onEditCar={setEditCarId} onDeleteCar={deleteCar}
+        onEditCar={setEditCarId} onDeleteCar={confirmDeleteCar}
         onSaveCar={saveCar} onCancelCar={cancelCar} />
       <CarForm buttonText="Add Car" onSubmitCar={addCar} />
       <ToolFooter companyName="A Cool Company, Inc." />
+      {confirmDeleteCarId > 0 && <ConfirmModal
+        onYes={() => deleteCar(confirmDeleteCarId)}
+        onNo={dismissConfirmDeleteCarModal}>
+          Are you sure you want to delete {getCarDetailsById(confirmDeleteCarId)}
+        </ConfirmModal>}
     </>
   );
 
