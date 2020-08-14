@@ -16,12 +16,7 @@ export const useListAsync: UseListAsync = <T extends Item>(dataSvc: IDataService
   const [ items, setItems ] = useState([] as T[]);
 
   const refreshItems: RefreshItems = useCallback(async () => {
-
-    const itemList = await dataSvc.all();
-
-    console.log(itemList);
-
-    setItems(itemList);
+    setItems(await dataSvc.all());
   }, [ dataSvc ]);
 
   const appendItem: AppendItem<T> = (item) => {
