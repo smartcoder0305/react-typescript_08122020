@@ -37,7 +37,7 @@ export const CarForm: FC<CarFormProps> = (props) => {
         <input type="number" id="year-input" name="year" value={carForm.year} onChange={change} />
       </div>
       <div>
-        <label htmlFor="color-input">Color:</label>
+        <label htmlFor="color-select">Color:</label>
         <select id="color-select" name="color" onChange={change}>
           {carColors.map(carColor =>
             <option key={carColor} value={carColor}>{carColor}</option>)}

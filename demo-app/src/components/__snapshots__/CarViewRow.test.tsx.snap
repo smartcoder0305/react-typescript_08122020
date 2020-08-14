@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CarViewRow /> Enzyme Static HTML <CarViewRow /> renders 1`] = `"\\"<tbody><tr><td>1</td><td>Ford</td><td>F-150</td><td>1980</td><td>red</td><td>42000</td><td><button type=\\\\\\"button\\\\\\">Edit</button><button type=\\\\\\"button\\\\\\">Delete</button></td></tr></tbody>\\""`;

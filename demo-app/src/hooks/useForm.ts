@@ -6,7 +6,7 @@ type UseForm = <T>(initialForm: T) =>
   ([ T, (e: ChangeEvent<HTMLFormControls>) => void, () => void ]);
 
 function isInput(x: any): x is HTMLInputElement {
-  return x.valueAsNumber;
+  return x instanceof HTMLInputElement;
 }
 
 export const useForm: UseForm = (initialForm) => {
@@ -17,7 +17,7 @@ export const useForm: UseForm = (initialForm) => {
     setForm({
       ...form,
       [ e.target.name ]: isInput(e.target) && e.target.type === 'number'
-        ? e.target.valueAsNumber : e.target.value,
+        ? Number(e.target.value) : e.target.value,
     });
   };
 

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ToolHeader /> Enzyme Static HTML <ToolHeader /> renders 1`] = `"\\"<h1 class=\\\\\\"page-header\\\\\\">The Tool</h1>\\""`;
