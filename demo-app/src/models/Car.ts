@@ -1,5 +1,6 @@
-export type Car = {
-  id?: number;
+import { Item } from './Item';
+
+export interface Car extends Item {
   make: string;
   model: string;
   year: number;

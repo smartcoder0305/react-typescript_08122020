@@ -1,7 +1,6 @@
+import { Item } from './Item';
 
-
-export type Color = {
-  id?: number,
+export interface Color extends Item {
   name: string,
   hexcode: string,
 };

@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 
 import { Car } from '../models/Car';
-import { useCarList } from '../hooks/useCarList';
+import { useList } from '../hooks/useList';
 
 import { ToolHeader } from './ToolHeader';
 import { ToolFooter } from './ToolFooter';
@@ -64,14 +64,14 @@ const getCars = (cars: Car[], filterSettings: CarTableFilterSettings, sortSettin
 export const CarTool: FC<CarToolProps> = (props) => {
 
   const [ editCarId, setEditCarId ] = useState(-1);
+
   const [ confirmDeleteCarId, setConfirmDeleteCarId ] = useState(-1);
   const [ carTableFilterSettings, setCarTableFilterSettings ] = useState<CarTableFilterSettings>({ filterField: 'id', filterValue: '' });
   const [ carTableSortSettings, setCarTableSortSettings ] = useState<CarTableSortSettings>({ col: 'id', dir: 'asc' });
 
-  const [ cars, appendCar, removeCar, replaceCar ] = useCarList(props.cars.concat());
+  const [ cars, appendCar, removeCar, replaceCar ] = useList(props.cars.concat());
 
   const cancelCar = () => setEditCarId(-1);
-
 
   const addCar = (car: Car) => {
     appendCar(car);

@@ -2,7 +2,8 @@ import { useState } from 'react';
 
 import { Car } from '../models/Car';
 
-export type UseCarList = (initialCars: Car[]) => ([ Car[], (car: Car) => void, (carId: number) => void, (car: Car) => void ]);
+export type UseCarList = (initialCars: Car[]) =>
+  ([ Car[], (car: Car) => void, (carId: number) => void, (car: Car) => void ]);
 
 export const useCarList: UseCarList = (initialCars: Car[]) => {
 
