@@ -11,4 +11,6 @@ RESTService
 useListAsync
 useCarStore
 
+After adding the car to the REST API, refresh the list of cars from server.
+
 2. Ensure it works!
