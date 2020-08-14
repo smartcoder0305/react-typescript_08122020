@@ -1,11 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { Car } from '../models/Car';
 import { CarStore } from '../models/CarStore';
+import { IDataService } from '../services/IDataService';
+import { RESTService } from '../services/RESTService';
 
-import { useList } from './useList';
+import { useListAsync } from './useListAsync';
 import { CarTableFilterSettings } from '../components/CarTableFilterForm';
 import { CarTableSortSettings } from '../components/CarTable';
+
+const carsData: IDataService<Car> = new RESTService<Car>('http://localhost:3060/cars');
 
 const carTableCache = new Map<string, Car[]>();
 
@@ -62,7 +66,7 @@ export const useCarStore = (initialCars: Car[]) => {
   const [ carTableFilterSettings, setCarTableFilterSettings ] = useState<CarTableFilterSettings>({ filterField: 'id', filterValue: '' });
   const [ carTableSortSettings, setCarTableSortSettings ] = useState<CarTableSortSettings>({ col: 'id', dir: 'asc' });
 
-  const [ cars, appendCar, removeCar, replaceCar ] = useList(initialCars);
+  const [ cars, refreshCars, appendCar, removeCar, replaceCar ] = useListAsync(carsData);
 
   const cancelCar = () => setEditCarId(-1);
 
@@ -97,6 +101,11 @@ export const useCarStore = (initialCars: Car[]) => {
   const dismissConfirmDeleteCarModal = () => {
     setConfirmDeleteCarId(-1);
   };
+
+  useEffect(() => {
+    clearCarTableCache();
+    refreshCars();
+  }, [ refreshCars ]);
 
   const store: CarStore = {
     cars: getCars(cars, carTableFilterSettings, carTableSortSettings)!,
