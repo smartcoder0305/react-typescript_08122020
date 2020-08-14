@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 
-import { Car } from '../models/Car';
 import { CarStore } from '../models/CarStore';
-import { useCarStore } from '../hooks/useCarStore';
+import { useCarStoreContext } from '../contexts/carStoreContext';
 
 import { ToolHeader } from './ToolHeader';
 import { ToolFooter } from './ToolFooter';
@@ -11,11 +10,7 @@ import { CarForm } from './CarForm';
 import { ConfirmModal } from './ConfirmModal';
 import { CarTableFilterForm } from './CarTableFilterForm';
 
-export type CarToolProps = {
-  cars: Car[],
-};
-
-export const CarTool: FC<CarToolProps> = (props) => {
+export const CarTool: FC = () => {
 
   const {
     cars,
@@ -32,7 +27,7 @@ export const CarTool: FC<CarToolProps> = (props) => {
     addCar,
     setCarTableFilterSettings,
     setCarTableSortSettings,
-  }: CarStore = useCarStore(props.cars.concat());
+  }: CarStore = useCarStoreContext();
 
 
   return (
