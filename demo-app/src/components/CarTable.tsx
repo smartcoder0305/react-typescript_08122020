@@ -2,16 +2,24 @@ import React, { FC } from 'react';
 
 import { Car } from '../models/Car';
 
+import { CarEditRow } from './CarEditRow';
 import { CarViewRow } from './CarViewRow';
 
 export type CarTableProps = {
   cars?: Car[],
-  onDeleteCar: (carId: number) => void;
+  editCarId?: number,
+  onEditCar: (carId: number) => void,
+  onDeleteCar: (carId: number) => void,
+  onSaveCar: (car: Car) => void,
+  onCancelCar: () => void,
 };
 
 export const CarTable: FC<CarTableProps> = ({
-  cars,
-  onDeleteCar: deleteCar
+  cars, editCarId,
+  onEditCar: editCar,
+  onDeleteCar: deleteCar,
+  onSaveCar: saveCar,
+  onCancelCar: cancelCar,
 }) => {
 
   return (
@@ -28,8 +36,9 @@ export const CarTable: FC<CarTableProps> = ({
       </tr>
       </thead>
       <tbody>
-        {cars!.map(car => <CarViewRow key={car.id} car={car}
-          onDeleteCar={deleteCar} />)}
+        {cars!.map(car => car.id === editCarId
+          ? <CarEditRow key={car.id} car={car} onSaveCar={saveCar} onCancelCar={cancelCar} />
+          : <CarViewRow key={car.id} car={car} onEditCar={editCar} onDeleteCar={deleteCar} />)}
       </tbody>
     </table>
   );
@@ -39,4 +48,5 @@ export const CarTable: FC<CarTableProps> = ({
 
 CarTable.defaultProps = {
   cars: [],
+  editCarId: -1,
 };

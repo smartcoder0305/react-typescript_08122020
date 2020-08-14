@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 
 import { Car } from '../models/Car';
+import { carColors } from '../carFormLookups';
 import { useForm } from '../hooks/useForm';
 
 export type CarFormProps = {
@@ -8,12 +9,10 @@ export type CarFormProps = {
   onSubmitCar: (car: Car) => void,
 };
 
-const carColors = ['red','green','blue'];
-
 export const CarForm: FC<CarFormProps> = (props) => {
 
   const [ carForm, change, resetForm ] = useForm({
-    make: '', model: '', year: 1900, color: '', price: 0,
+    make: '', model: '', year: 1900, color: carColors[0], price: 0,
   });
 
   const submitCar = () => {

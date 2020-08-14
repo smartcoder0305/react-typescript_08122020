@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a07fa23-dcfe-4ac6-96f7-e9f335755ea1" name="Default Changelist" comment="" />
+    <list default="true" id="5a07fa23-dcfe-4ac6-96f7-e9f335755ea1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo-app/src/components/CarTool.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/demo-app/src/components/CarTool.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +44,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597333662625</updated>
-      <workItem from="1597333663662" duration="3115000" />
+      <workItem from="1597333663662" duration="3832000" />
+      <workItem from="1597360251643" duration="1025000" />
     </task>
     <servers />
   </component>
