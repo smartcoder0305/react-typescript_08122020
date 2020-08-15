@@ -34,7 +34,7 @@ export const CarEditRow: FC<CarEditRowProps> = ({
       <td><input type="text" name="model" value={carForm.model} onChange={change} /></td>
       <td><input type="number" name="year" value={carForm.year} onChange={change} /></td>
       <td>
-        <select name="color" onChange={change}>
+        <select name="color" onChange={change} value={carForm.color}>
           {carColors.map(carColor =>
             <option key={carColor} value={carColor}>{carColor}</option>)}
         </select> 

@@ -29,4 +29,27 @@ export class RESTService<T extends Item> implements IDataService<T> {
     return resources;
   }
 
+  async appendOne(item : T): Promise<void> {
+    await fetch(this.baseUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(item),
+    });
+  }
+
+  async replaceOne(item: T): Promise<void> {
+    await fetch(this.baseUrl + '/' + encodeURIComponent(item.id!), {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(item),
+    });
+  }
+
+  async removeOne(itemId: number): Promise<void> {
+    await fetch(this.baseUrl + '/' + encodeURIComponent(itemId), {
+      method: 'DELETE',
+    });
+  }
+
+
 }

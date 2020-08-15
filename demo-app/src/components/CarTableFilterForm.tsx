@@ -21,10 +21,20 @@ const filterFields: CarFieldField[] = [
 
 export const CarTableFilterForm: FC<CarTableFilterFormProps> = (props) => {
 
-  const [ filterForm, change ] = useForm<CarTableFilterSettings>({
+  const [ filterForm, change, resetFilterForm ] = useForm<CarTableFilterSettings>({
     filterField: 'make',
     filterValue: '',
   });
+
+  const clearFilter = () => {
+
+    props.onFilter({
+      filterField: 'id', filterValue: '',
+    });
+
+    resetFilterForm();
+
+  };
 
   return (
     <form>
@@ -40,9 +50,7 @@ export const CarTableFilterForm: FC<CarTableFilterFormProps> = (props) => {
       <button type="button" onClick={() => props.onFilter({
         filterField: filterForm.filterField, filterValue: filterForm.filterValue,
       })}>Apply Filter</button>
-      <button type="button" onClick={() => props.onFilter({
-        filterField: 'id', filterValue: '',
-      })}>Clear Filter</button>
+      <button type="button" onClick={clearFilter}>Clear Filter</button>
     </form>
   )
 

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 
 import { Color } from '../models/Color';
 import { useList } from '../hooks/useList';

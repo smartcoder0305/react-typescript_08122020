@@ -70,27 +70,30 @@ export const useCarStore = (initialCars: Car[]) => {
 
   const cancelCar = () => setEditCarId(-1);
 
-  const addCar = (car: Car) => {
-    appendCar(car);
+  const addCar = async (car: Car) => {
     cancelCar();
+    await appendCar(car);
     clearCarTableCache();
+    await refreshCars();
   };
 
   const confirmDeleteCar = (carId: number) => {
     setConfirmDeleteCarId(carId);
   };
 
-  const deleteCar = (carId: number) => {
-    removeCar(carId);
+  const deleteCar = async (carId: number) => {
     cancelCar();
-    clearCarTableCache();
     dismissConfirmDeleteCarModal();
+    await removeCar(carId);
+    clearCarTableCache();
+    await refreshCars();
   };
 
-  const saveCar = (car: Car) => {
-    replaceCar(car);
+  const saveCar = async (car: Car) => {
     cancelCar();
+    await replaceCar(car);
     clearCarTableCache();
+    await refreshCars();
   };
 
   const getCarDetailsById = (carId: number) => {
